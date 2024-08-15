@@ -6,11 +6,12 @@ interface MoviesPageProps {
 }
 
 const MoviesPage = async ({ searchParams }: MoviesPageProps) => {
+
     const currentPage = searchParams?.page ? parseInt(searchParams.page, 10) : 1
     const movies = await getMoviesByNumOfPage(currentPage)
-    console.log(movies)
     return (
         <div>
+            MOVIES PAGE
             <div className="moviesPage">
 
                 {movies.results.map((movie) => (
@@ -32,7 +33,7 @@ const MoviesPage = async ({ searchParams }: MoviesPageProps) => {
 
 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
-                <Link href={`?page=${currentPage - 1}`} passHref>
+                <Link href={`?page=${currentPage - 1}`}>
                     <button
                         disabled={currentPage === 1}
                         style={{ marginRight: '10px', padding: '5px 10px' }}
@@ -43,7 +44,7 @@ const MoviesPage = async ({ searchParams }: MoviesPageProps) => {
                 <div>
                     Page {currentPage} of {movies.total_pages}
                 </div>
-                <Link href={`?page=${currentPage + 1}`} passHref>
+                <Link href={`?page=${currentPage + 1}`}>
                     <button
                         disabled={currentPage === movies.total_pages}
                         style={{ marginLeft: '10px', padding: '5px 10px' }}

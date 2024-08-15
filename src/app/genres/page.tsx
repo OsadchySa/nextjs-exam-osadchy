@@ -8,6 +8,8 @@ import Link from 'next/link';
 
     return (
         <div >
+            GENRES PAGE
+
             <h2>Movie Genres</h2>
             <ul>
                 {genres.map((genre) => (

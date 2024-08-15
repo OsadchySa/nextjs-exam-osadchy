@@ -26,8 +26,8 @@ export const getGenres = async () => {
     return data.genres
 }
 
-export const getMoviesByGenre = async (genreId: number, page: number = 1) => {
-    const response = await fetch(`${baseUrl}/discover/movie?with_genres=${genreId}`, {
+export const getMoviesByGenre = async (genreId: number, page: number) => {
+    const response = await fetch(`${baseUrl}/discover/movie?with_genres=${genreId}&page=${page}`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token}`,
@@ -35,8 +35,10 @@ export const getMoviesByGenre = async (genreId: number, page: number = 1) => {
         }
     })
     const data = await response.json()
+    console.log(data.page)
     return {
         results: data.results,
-        totalPages: data.total_pages
+        total_pages: data.total_pages,
     }
+
 }

@@ -1,7 +1,7 @@
 import React from 'react';
-// app/genres/[id]/page.tsx
 import Link from 'next/link';
-import { getMoviesByGenre } from '@/services/api.service';
+import {getMoviesByGenre} from '@/services/api.service';
+
 
 type Movie = {
     id: number;
@@ -19,8 +19,11 @@ type GenreMoviesPageProps = {
 };
 
 const GenreMoviesPage = async({ params, searchParams }: GenreMoviesPageProps)=> {
+    const currentPage = searchParams?.page ? parseInt(searchParams.page, 10) : 1;
+    console.log('params:', params)
+    console.log('serach params:', searchParams)
     const genreId = parseInt(params.id, 10);
-    const currentPage = searchParams.page ? parseInt(searchParams.page, 10) : 1;
+    console.log(currentPage)
     const {results: movies, total_pages} = await getMoviesByGenre(genreId, currentPage);
 
     return (
@@ -46,7 +49,7 @@ const GenreMoviesPage = async({ params, searchParams }: GenreMoviesPageProps)=> 
                     </button>
                 </Link>
                 <div>
-                    Page {currentPage} of {movies.total_pages}
+                    Page {currentPage}
                 </div>
                 <Link href={`/genres/${genreId}?page=${currentPage + 1}`} passHref>
                     <button
@@ -61,6 +64,5 @@ const GenreMoviesPage = async({ params, searchParams }: GenreMoviesPageProps)=> 
     );
 }
 
-//`/genres/${genreId}?page=${currentPage - 1}`
-//`/genres/${genreId}?page=${currentPage + 1}`
+
 export default GenreMoviesPage
