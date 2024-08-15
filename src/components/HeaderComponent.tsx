@@ -4,21 +4,22 @@ import Link from "next/link";
 const HeaderComponent = () => {
     return (
         <div className={'headerMain'}>
-            <div className={'headerMinDiv'}>
-                The Movie DB
-            </div>
-            <div className={'headerMinDiv'}>
+            <h1 className={'headerMinDiv'}>
+                <Link href={'https://www.themoviedb.org/'}>The Movie DB</Link>
+            </h1>
+
+            <h1 className={'headerMinDiv'}>
                 <Link href={'/movies'}>MOVIES</Link>
-            </div>
-            <div className={'headerMinDiv'}>
+            </h1>
+            <h1 className={'headerMinDiv'}>
                 <Link href={'/genres'}>Genres</Link>
-            </div>
-            <div className={'headerMinDiv'}>
-                Search
-            </div>
-            <div className={'headerMinDiv'}>
+            </h1>
+            <h1 className={'headerMinDiv'}>
+                <Link href={'/search'}>Search</Link>
+            </h1>
+            <h1 className={'headerMinDiv'}>
                 Theme
-            </div>
+            </h1>
         </div>
     );
 };

@@ -11,7 +11,6 @@ const MoviesPage = async ({ searchParams }: MoviesPageProps) => {
     const movies = await getMoviesByNumOfPage(currentPage)
     return (
         <div>
-            MOVIES PAGE
             <div className="moviesPage">
 
                 {movies.results.map((movie) => (
@@ -26,7 +25,7 @@ const MoviesPage = async ({ searchParams }: MoviesPageProps) => {
                                 alt={movie.title}
                             />
                         </Link>
-                        {movie.title}
+                        <h3>{movie.title}</h3>
                     </div>
                 ))}
             </div>

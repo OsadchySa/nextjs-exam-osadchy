@@ -12,16 +12,19 @@ body{
 }
 .headerMain {
     height: 10vh;
-    background-color: #000f1e;
+    background-color: #e74420;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-evenly;
 }
 .allOfImg {
-    width: 14vw
+    width: 14vw;
+    margin-top: 5vh;
+    color: #252593;
 }
 .littleCardMovie {
+    color: #252593;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -29,7 +32,7 @@ body{
     margin: 20px;
 }
 .headerMinDiv {
-    background-color: #031944;
+    background-color: #e74420;
 }
 
 .paginationMainDiv{
@@ -41,6 +44,11 @@ button{
     height: 6vh;
     width: 25vw;
 }
+.searchBut{
+    background-color: #031944;
+    height: 3.5vh;
+    width: 10vw;
+}
 .indicatorDiv{
     background-color: #031944;
     color: rgba(255, 255, 255, 0.99);
@@ -50,7 +58,30 @@ button{
     justify-content: center;
     align-items: center;
 }
+.searchDiv{
+    margin-top: 5vh;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.searchInput{
+    width: 22vw;
+}
 .oneMovie{
     display: flex;
     flex-direction: column;
+
+}
+.genreDiv{
+    display: flex;
+    flex-direction: row;
+}
+.cardOfSerchedMovie{
+    display: flex;
+    flex-direction: column;
+
+}
+form{
+    display: flex;
+    justify-content: center;
 }

@@ -7,17 +7,12 @@ import Link from 'next/link';
     const genres = await getGenres();
 
     return (
-        <div >
-            GENRES PAGE
-
-            <h2>Movie Genres</h2>
-            <ul>
-                {genres.map((genre) => (
-                    <li key={genre.id} style={{ marginLeft: '10px', padding: '5px 10px', color: "white" }}>
-                        <Link href={`/genres/${genre.id}`}>{genre.name}</Link>
-                    </li>
-                ))}
-            </ul>
+        <div className={'genreDiv'}>
+            {genres.map((genre) => (
+                <div key={genre.id} style={{ marginLeft: '10px', padding: '5px 10px', color: "white" }}>
+                    <Link href={`/genres/${genre.id}`}>{genre.name}</Link>
+                </div>
+            ))}
         </div>
     );
 }

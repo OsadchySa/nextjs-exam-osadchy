@@ -5,8 +5,6 @@ const MoviePage = ({searchParams}:any) => {
     //console.log(movie)
     return (
         <div className={'oneMovie'}>
-
-            MOVIE PAGE
             <img
                 className="allOfImg"
                 src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}

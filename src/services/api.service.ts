@@ -38,7 +38,24 @@ export const getMoviesByGenre = async (genreId: number, page: number) => {
     console.log(data.page)
     return {
         results: data.results,
-        total_pages: data.total_pages,
+        total_pages: data.total_pages
     }
 
 }
+export const getMoviesBySearch = async (query: string) => {
+    const encodedQuery = encodeURIComponent(query);
+    const response = await fetch(`${baseUrl}/search/movie?query=${encodedQuery}`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        },
+    });
+
+    if (!response.ok) {
+        throw new Error('Failed to fetch search results');
+    }
+
+    const data = await response.json();
+    return data.results;
+};
