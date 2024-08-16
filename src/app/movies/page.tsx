@@ -36,9 +36,8 @@ const MoviesPage = async ({ searchParams }: MoviesPageProps) => {
 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
                 <Link href={`?page=${currentPage - 1}`}>
-                    <button
+                    <button className={'pagBut'}
                         disabled={currentPage === 1}
-                        style={{ marginRight: '10px', padding: '5px 10px' }}
                     >
                         Previous
                     </button>
@@ -47,9 +46,8 @@ const MoviesPage = async ({ searchParams }: MoviesPageProps) => {
                     Page {currentPage} of {movies.total_pages}
                 </div>
                 <Link href={`?page=${currentPage + 1}`}>
-                    <button
+                    <button className={'pagBut'}
                         disabled={currentPage === movies.total_pages}
-                        style={{ marginLeft: '10px', padding: '5px 10px' }}
                     >
                         Next
                     </button>
@@ -59,4 +57,4 @@ const MoviesPage = async ({ searchParams }: MoviesPageProps) => {
     );
 };
 
-export default MoviesPage;
+export default MoviesPage

@@ -7,22 +7,22 @@ import StarRatingComponent from "@/components/StarRatingComponent";
 type Movie = {
     id: number;
     title: string;
-    poster_path: string;
-};
+    poster_path: string
+}
 
 type GenreMoviesPageProps = {
     params: {
-        id: string;
-    };
+        id: string
+    }
     searchParams: {
-        page?: string;
-    };
-};
+        page?: string
+    }
+}
 
 const GenreMoviesPage = async({ params, searchParams }: GenreMoviesPageProps)=> {
-    const currentPage = searchParams?.page ? parseInt(searchParams.page, 10) : 1;
+    const currentPage = searchParams?.page ? parseInt(searchParams.page, 10) : 1
     const genreId = parseInt(params.id, 10);
-    const {results: movies, total_pages} = await getMoviesByGenre(genreId, currentPage);
+    const {results: movies, total_pages} = await getMoviesByGenre(genreId, currentPage)
     console.log(movies)
     return (
         <div>
@@ -49,9 +49,8 @@ const GenreMoviesPage = async({ params, searchParams }: GenreMoviesPageProps)=> 
 
             <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px'}}>
                 <Link href={`/genres/${genreId}?page=${currentPage - 1}`} passHref>
-                    <button
+                    <button className={'pagBut'}
                         disabled={currentPage === 1}
-                        style={{marginRight: '10px', padding: '5px 10px'}}
                     >
                         Previous
                     </button>
@@ -60,9 +59,8 @@ const GenreMoviesPage = async({ params, searchParams }: GenreMoviesPageProps)=> 
                     Page {currentPage}
                 </div>
                 <Link href={`/genres/${genreId}?page=${currentPage + 1}`} passHref>
-                    <button
+                    <button className={'pagBut'}
                         disabled={currentPage === movies.total_pages}
-                        style={{marginLeft: '10px', padding: '5px 10px'}}
                     >
                         Next
                     </button>

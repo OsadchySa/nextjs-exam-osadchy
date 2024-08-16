@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from "next/link";
+import SwitcerComponent from "@/components/SwitcerComponent";
 
 const HeaderComponent = () => {
     return (
@@ -17,9 +18,7 @@ const HeaderComponent = () => {
             <h1 className={'headerMinDiv'}>
                 <Link href={'/search'}>Search</Link>
             </h1>
-            <h1 className={'headerMinDiv'}>
-                Theme
-            </h1>
+            <SwitcerComponent/>
         </div>
     );
 };
