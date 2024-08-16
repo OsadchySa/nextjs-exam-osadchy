@@ -1,7 +1,7 @@
 const baseUrl = 'https://api.themoviedb.org/3';
 const token = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI5NjFkOTYzMGRlNTczNjg2YmJkYzQzNDNkNzllZjVjZCIsIm5iZiI6MTcyMzM4NTQyNC40MzIyNDEsInN1YiI6IjY2YjhjMjUwMjM0ZjU0ZjY0N2JmYzE2OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.jCT-xIZsN4wU2-ZXOsjSSjCtjyrM5TZkB_HRgkN068A';
 
-export const getMoviesByNumOfPage = async (page: number = 1) => {
+export const getMoviesByNumOfPage = async (page: number = 1):Promise<any> => {
     const response = await fetch(`${baseUrl}/discover/movie?page=${page}`, {
         method: 'GET',
         headers: {
@@ -10,12 +10,24 @@ export const getMoviesByNumOfPage = async (page: number = 1) => {
         }
     })
     const data = await response.json()
-    console.log(data.page)
+    console.log(data)
     return data
 }
 
 export const getGenres = async () => {
     const response = await fetch(`${baseUrl}/genre/movie/list`, {
+        method: 'GET',
+        headers: {
+            Authorization: `Bearer ${token}`,
+            'Content-Type': 'application/json',
+        }
+    })
+    const data = await response.json()
+    return data.genres
+}
+
+export const getGenreById = async (genre_ids: number) => {
+    const response = await fetch(`${baseUrl}/genre/movie/list${genre_ids}`, {
         method: 'GET',
         headers: {
             Authorization: `Bearer ${token}`,
@@ -35,7 +47,6 @@ export const getMoviesByGenre = async (genreId: number, page: number) => {
         }
     })
     const data = await response.json()
-    console.log(data.page)
     return {
         results: data.results,
         total_pages: data.total_pages
@@ -49,13 +60,8 @@ export const getMoviesBySearch = async (query: string) => {
         headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'application/json',
-        },
-    });
-
-    if (!response.ok) {
-        throw new Error('Failed to fetch search results');
-    }
-
-    const data = await response.json();
-    return data.results;
-};
+        }
+    })
+    const data = await response.json()
+    return data.results
+}

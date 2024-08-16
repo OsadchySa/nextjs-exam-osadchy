@@ -1,5 +1,8 @@
-import  {getMoviesByNumOfPage} from '@/services/api.service';
+import React from "react";
+import {getMoviesByNumOfPage} from '@/services/api.service';
 import Link from 'next/link';
+import StarRatingComponent from "@/components/StarRatingComponent";
+
 
 interface MoviesPageProps {
     searchParams: { page?: string }
@@ -12,7 +15,6 @@ const MoviesPage = async ({ searchParams }: MoviesPageProps) => {
     return (
         <div>
             <div className="moviesPage">
-
                 {movies.results.map((movie) => (
                     <div className="littleCardMovie" key={movie.id}>
                         <Link href={{
@@ -26,6 +28,7 @@ const MoviesPage = async ({ searchParams }: MoviesPageProps) => {
                             />
                         </Link>
                         <h3>{movie.title}</h3>
+                        <StarRatingComponent rating={movie.vote_average}/>
                     </div>
                 ))}
             </div>

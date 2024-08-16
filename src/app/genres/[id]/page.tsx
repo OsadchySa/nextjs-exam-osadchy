@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import {getMoviesByGenre} from '@/services/api.service';
+import StarRatingComponent from "@/components/StarRatingComponent";
 
 
 type Movie = {
@@ -20,19 +21,26 @@ type GenreMoviesPageProps = {
 
 const GenreMoviesPage = async({ params, searchParams }: GenreMoviesPageProps)=> {
     const currentPage = searchParams?.page ? parseInt(searchParams.page, 10) : 1;
-    console.log('params:', params)
-    console.log('serach params:', searchParams)
     const genreId = parseInt(params.id, 10);
-    console.log(currentPage)
     const {results: movies, total_pages} = await getMoviesByGenre(genreId, currentPage);
-
+    console.log(movies)
     return (
         <div>
             <h2>Movies in this Genre</h2>
             <div className="moviesPage">
                 {movies.map((movie: Movie) => (
                     <div className="littleCardMovie" key={movie.id}>
-                        <img className="allOfImg" src={'https://image.tmdb.org/t/p/w500/' + movie.poster_path}/>
+                        <Link href={{
+                            pathname:'/movies/'+movie.title,
+                            query:{data:JSON.stringify(movie)}
+                        }}>
+                            <img
+                                className="allOfImg"
+                                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
+                                alt={movie.title}
+                            />
+                        </Link>
+                        <StarRatingComponent rating={movie.vote_average}/>
                         <p>{movie.title}</p>
                     </div>
                 ))}
