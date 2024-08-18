@@ -77,4 +77,5 @@ const GenreMoviesPage = async({ params, searchParams }: GenreMoviesPageProps)=> 
 }
 
 
+
 export default GenreMoviesPage
