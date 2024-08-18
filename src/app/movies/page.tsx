@@ -36,7 +36,7 @@ const MoviesPage = async ({ searchParams }: MoviesPageProps) => {
                                 alt={movie.title}
                             />
                         </Link>
-                        <Link href={{
+                        <Link className={'genresMenu'} href={{
                             pathname: '/movies/' + movie.title,
                             query: { data: JSON.stringify(movie) }
                         }}>

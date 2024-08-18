@@ -40,7 +40,7 @@ const SearchPage = async ({searchParams}: SearchPageProps) => {
                                     alt={movie.title}
                                 />
                             </Link>
-                            <Link href={{
+                            <Link className={'genresMenu'} href={{
                                 pathname:'/movies/'+movie.title,
                                 query:{data:JSON.stringify(movie)}
                             }}><h3>{movie.title}</h3>

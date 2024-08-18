@@ -1,5 +1,5 @@
 :root {
-    --background-color: white;
+    --background-color: #a29f9f;
     --text-color: black;
 }
 
@@ -61,7 +61,7 @@ body {
     width: 10vw;
 }
 .switchBut{
-    background-color: #1f1f1f;
+    background-color: #424242;
     color: rgba(255, 255, 255, 0.99);
     height: 5vh;
     width: 10vw;
@@ -91,7 +91,8 @@ body {
 }
 .genreDiv{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+
 }
 .cardOfSerchedMovie{
     display: flex;
@@ -101,4 +102,13 @@ body {
 form{
     display: flex;
     justify-content: center;
+}
+.linkHead{
+    color: #333333;
+    text-decoration: none;
+}
+.genresMenu{
+    text-decoration: none;
+    color: #2b44ad;
+    font-weight: bold;
 }

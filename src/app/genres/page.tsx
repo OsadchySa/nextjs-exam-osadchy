@@ -10,7 +10,7 @@ import Link from 'next/link';
         <div className={'genreDiv'}>
             {genres.map((genre) => (
                 <div key={genre.id} style={{ marginLeft: '10px', padding: '5px 10px', color: "white" }}>
-                    <Link href={`/genres/${genre.id}`}>{genre.name}</Link>
+                    <Link className={'genresMenu'} href={`/genres/${genre.id}`}>{genre.name}</Link>
                 </div>
             ))}
         </div>
