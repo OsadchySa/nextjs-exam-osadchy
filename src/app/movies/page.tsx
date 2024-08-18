@@ -27,7 +27,12 @@ const MoviesPage = async ({ searchParams }: MoviesPageProps) => {
                                 alt={movie.title}
                             />
                         </Link>
-                        <h3>{movie.title}</h3>
+                        <Link href={{
+                            pathname:'/movies/'+movie.title,
+                            query:{data:JSON.stringify(movie)}
+                        }}>
+                            <h3>{movie.title}</h3>
+                        </Link>
                         <StarRatingComponent rating={movie.vote_average}/>
                     </div>
                 ))}

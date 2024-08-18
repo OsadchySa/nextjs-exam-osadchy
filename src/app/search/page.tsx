@@ -3,12 +3,12 @@ import {getMoviesBySearch} from "@/services/api.service";
 import Link from "next/link";
 
 type SearchPageProps = {
-    searchParams: { query?: string };
-};
+    searchParams: { query?: string }
+}
 
-const SearchPage = async ({ searchParams }: SearchPageProps) => {
-    const query = searchParams.query || '';
-    const movies = query ? await getMoviesBySearch(query) : [];
+const SearchPage = async ({searchParams}: SearchPageProps) => {
+    const query = searchParams.query || ''
+    const movies = query ? await getMoviesBySearch(query) : []
 
     return (
         <div className={'searchDiv'}>
@@ -40,8 +40,14 @@ const SearchPage = async ({ searchParams }: SearchPageProps) => {
                                     alt={movie.title}
                                 />
                             </Link>
-                            <h3>{movie.title}</h3> <div>release date:{movie.release_date}</div>
-
+                            <Link href={{
+                                pathname:'/movies/'+movie.title,
+                                query:{data:JSON.stringify(movie)}
+                            }}><h3>{movie.title}</h3>
+                            </Link>
+                            <div>
+                                release date:{movie.release_date}
+                            </div>
                         </div>
                     ))}
                 </div>
