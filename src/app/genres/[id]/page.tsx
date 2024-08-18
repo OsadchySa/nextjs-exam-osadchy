@@ -7,7 +7,8 @@ import StarRatingComponent from "@/components/StarRatingComponent";
 type Movie = {
     id: number;
     title: string;
-    poster_path: string
+    poster_path: string,
+    vote_average: number
 }
 
 type GenreMoviesPageProps = {

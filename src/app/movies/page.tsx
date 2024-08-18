@@ -15,10 +15,7 @@ interface Movie {
     vote_average: number
 }
 
-interface MoviesResponse {
-    results: Movie[];
-    total_pages: number
-}
+
 
 const MoviesPage = async ({ searchParams }: MoviesPageProps) => {
     const currentPage = searchParams?.page ? parseInt(searchParams.page, 10) : 1;
